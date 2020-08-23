@@ -1,4 +1,4 @@
-###### TIL
+# TIL
 >Today I Learned
 
 *천천히, 하지만 확실하게 공부하자*
@@ -12,6 +12,6 @@
 <br>
 
 
-##### [Algorithm]()
+## [Algorithm]()
 
-##### [Java]()
+## [Java]()
