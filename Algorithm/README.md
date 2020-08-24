@@ -1,5 +1,5 @@
-#####Algorithm
+## Algorithm
 
-####leetcode
+### leetcode
 
-####오답노트
+### 오답
