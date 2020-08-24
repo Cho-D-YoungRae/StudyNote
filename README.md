@@ -12,12 +12,7 @@
 <br>
 
 
-<<<<<<< HEAD
-##### [Algorithm](./Algorithm/README.md)
+## [Algorithm](./Algorithm)
 
-##### [JAVA](./JAVA/README.md)
-=======
-## [Algorithm]()
+## [JAVA](./JAVA)
 
-## [Java]()
->>>>>>> b91af029c3bb010ff751f7e70e2e79e84fa8ee7f
