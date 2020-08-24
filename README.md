@@ -12,6 +12,6 @@
 <br>
 
 
-##### [Algorithm]()
+##### [Algorithm](./Algorithm/README.md)
 
-##### [Java]()
+##### [JAVA](./JAVA/README.md)
