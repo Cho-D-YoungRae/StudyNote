@@ -36,7 +36,7 @@ int ar[] = new int[3];  // 조금 더 선호하는 방법
 - - 복사할 요소의 수: length
 
 ##### enhanced for 문
-###### enhanced for 문
+###### enhanced for 문의 이해와 활용
 ```java
 for(요소 : 배열) {
   반복할 문장
