@@ -1,1 +1,0 @@
-클래스의 이름을 SimpleJavaProgram으로 수정한다. 
