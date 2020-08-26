@@ -5,6 +5,9 @@
 
 ##### 콘솔 입력 (Console Input)
 ###### Scanner 클래스
+> java.util 에 속해있다
+
+
 - Scanner(File source)
 - Scanner(String source)
 - Scanner(InputStream source)
@@ -17,3 +20,4 @@
 - double nextDouble()
 - boolean nextBoolean()
 - ...
+

@@ -14,6 +14,18 @@
 
 가까운 위치에 있는 메소드 실행된다.
 
+###### 키워드 this를 이용한 다른 생성자의 호출
+```java
+class Person {
+  Person (int rnum, int pnum){
+    ...
+  }
+  Person (int rnum) {
+    this(rnum, 0)
+  }
+}
+```
+
 ###### 키워드 this를 이용한 인스턴스 변수의 접근
 메소드의 매개변수 이름이 인스턴스 변수의 이름과 동일하게 선언된 경우,
 
