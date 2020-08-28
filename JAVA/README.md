@@ -14,3 +14,6 @@
 - [17. 인터페이스와 추상 클래스](./Yoon_java/Chapter17.md)
 - [18. 예외처리](./Yoon_java/Chapter18.md)
 - [19. 자바의 메모리 모델과 Object 클래스](./Yoon_java/Chapter19.md)
+- [20. 자바의 기본 클래스](./Yoon_java/Chapter20.md)
+- [21. 제네릭1](./Yoon_java/Chapter21.md)
+- [22. 제네릭2](./Yoon_java/Chapter22.md)
