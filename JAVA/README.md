@@ -17,3 +17,5 @@
 - [20. 자바의 기본 클래스](./Yoon_java/Chapter20.md)
 - [21. 제네릭1](./Yoon_java/Chapter21.md)
 - [22. 제네릭2](./Yoon_java/Chapter22.md)
+- [23. 컬렉션 프레임워크 1](./Yoon_java/Chapter23.md)
+- [24. 컬렉션 프레임워크 2](./Yoon_java/Chapter24.md)
