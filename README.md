@@ -16,5 +16,7 @@
 
 ## [JAVA](./JAVA)
 
+## [Python](./Python)
+
 ## [GIT](./GIT)
 

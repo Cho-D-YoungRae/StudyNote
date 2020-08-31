@@ -18,7 +18,7 @@ List\<E\>를 구현한 컬렉션 클래스들 정렬을 위한 메소드. Collec
 class Car implements Comparable<Car> {...}
 class ECar extends Car {...}
 ```
-위와 같을 때 ECar는 Comparable\<Car\>를 간접 구현하는 상태가 된다. 이 때 \<T extends Comparable\<T\>\> 라면 'T는 ECar로 결정'되고 그렇다면 ECar는 Comparable\<Ecar\>를 구현해야하므로 sort메소드 호출에 문제가 생긴다. 위 상황을 고려하여 <T extends Comparable<? super T>> 이와 같이 정의 되었고 ECar 클래스는 Comparable\<Object\>, Comparable\<Car\>, Comparable\<Ecar\> 이 셋 인터페이스 중 하나만 구현해도 sort 메소드 호출은 성공한다.
+위와 같을 때 ECar는 Comparable\<Car\>를 간접 구현하는 상태가 된다. 이 때 \<T extends Comparable\<T\>\> 라면 'T는 ECar로 결정'되고 그렇다면 ECar는 Comparable\<Ecar\>를 구현해야하므로 sort메소드 호출에 문제가 생긴다. 위 상황을 고려하여 \<T extends Comparable\<? super T\>\> 이와 같이 정의 되었고 ECar 클래스는 Comparable\<Object\>, Comparable\<Car\>, Comparable\<Ecar\> 이 셋 인터페이스 중 하나만 구현해도 sort 메소드 호출은 성공한다.
 
 ###### 정렬: Comparator\<T\> 기반
 ---
