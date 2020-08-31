@@ -19,3 +19,5 @@
 - [22. 제네릭2](./Yoon_java/Chapter22.md)
 - [23. 컬렉션 프레임워크 1](./Yoon_java/Chapter23.md)
 - [24. 컬렉션 프레임워크 2](./Yoon_java/Chapter24.md)
+- [25. 열거형, 가변 인자 그리고 어노테이션](./Yoon_java/Chapter25.md)
+- [26. 네스티드 클래스와 람다의 첫 소개](./Yoon_java/Chapter26.md)
