@@ -18,5 +18,7 @@
 
 ## [Python](./Python)
 
+## [MySQL](./MySQL)
+
 ## [GIT](./GIT)
 
