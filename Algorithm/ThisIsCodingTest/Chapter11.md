@@ -65,4 +65,48 @@ if __name__ == '__main__':
 ```
 
 
-###### 4. 만들 수 없는 금액
+###### 4. 만들 수 없는 금액 \*
+**오답정리**
+화폐 단위를 기준으로 오름차순 정렬한다. 이후에 1부터 차례대로 특정한 금액을 만들 수 있는지 확인하면 된다. 1부터 target - 1까지의 모든 금액을 만들 수 있다고 가정해보자. 우리는 화폐 단위가 작은 순서대로 동전을 확인하며, 현재 확인하는 동전을 이용해 target 금액 또한 만들 수 있는지 확인하면 된다.
+예를 들어 1, 2, 3 동전이 있을 때 1~6까지 만들 수 있으면, 1, 2, 3, 5 동전이 주어지면 6 + 5 = 11 까지 만들 수 있다. 이렇게 차례대로 동전을 확인하고 target 값을 업데이트 해준다.
+
+[교재코드](.\python-for-coding-test-master\11\4.py)
+
+
+###### 5. 볼링공 고르기
+```python
+if __name__ == '__main__':
+    N, M = map(int, input().split())
+    weights = list(map(int, input().split()))
+    weights.sort()  # 공 무게별 오름차순 정렬
+
+    result = 0
+    idx = 0
+    # 공 무게는 1부터 M까지 있는데, 맨 마지막에 M무게 공만
+    # 남았을 때는 서로 다른 무게를 고를 수 없으므로 M 이전까지
+    for weight in range(1, M):
+        count = 0   # 현재 무게의 공 개수
+        while weights[idx] == weight:
+            idx += 1
+            count += 1
+
+        # 현재 무게의 공 개수와 이 보다 더 무거운 공 개수를 곱한다
+        # 더 가벼운 무게의 공과의 계산은 이전에 행해졌다.
+        result += (count * (len(weights) - idx))
+
+    print(result)
+```    
+
+Counter를 이용
+```python
+if __name__ == '__main__':
+    N, M = map(int, input().split())
+    weights = collections.Counter(map(int, input().split()))
+
+    result = 0
+    for i in range(1, M):
+        N -= weights[i]
+        result += N * weights[i]
+
+    print(result)
+```

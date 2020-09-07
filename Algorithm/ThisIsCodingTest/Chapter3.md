@@ -32,7 +32,7 @@ def main():
 main()
 ```
 
-###### 1이 될 때까지
+###### 1이 될 때까지 \*
 ```python
 def main():
   N, K = map(int, input().split())
