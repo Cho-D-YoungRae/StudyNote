@@ -51,7 +51,7 @@ def main():
 main()
 ```
 
-수정
+오답 정리
 ```python
 def main():
   N, K = map(int, input().split())
