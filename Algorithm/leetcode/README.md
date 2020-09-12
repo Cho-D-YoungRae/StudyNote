@@ -3,3 +3,5 @@
 - [125_Valid_Palindrome](./125_Valid_Palindrome/125_Valid_Palindrome.md)
 - [344_Reverse_String](./344_Reverse_String/344_Reverse_String.md)
 - [937_Reorder_Data_in_Log_Files](./937_Reorder_Data_in_Log_Files/937_Reorder_Data_in_Log_Files.md)
+- [819_Most_Common_Word](./819_Most_Common_Word/819_Most_Common_Word.md)
+- [49_Group_Anagrams](./49_Group_Anagrams/49_Group_Anagrams.md)
