@@ -286,3 +286,188 @@ SELECT groupName, SUM(price*amount) AS '비용'
     WITH ROLLUP;
 ```
 
+##### 6.2 데이터의 변경을 위한 SQL문
+---
+###### 6.2.1 데이터의 삽입 : INSERT
+---
+**INSERT문 기본**
+
+기본 형식
+```sql
+INSERT [INTO] 테이블[(열1, 열2, ...)] VALUES (값1, 값2, ...)
+```
+테이블 이름에 다음에 나오는 열은 생략 가능하다. 하지만, 생략할 경우 VALUES 다음에 나오는 값들의 순서 및 개수가 테이블에 정의된 열 순서 및 개수와 동일해야 한다.
+```sql
+USE sqldb;
+CREATE TABLE testtbl1 (id INT, username CHAR(3), age INT);
+INSERT INTO testtbl1 VALUES (1, '홍길동', 25);
+```
+만약, 위 예에서 ID와 이름만 입력하고 나이를 입력하고 싶지 않다면 다으모가 같이 테이블 이름뒤에 입력할 열의 목록을 나열해줘야 한다. 이 경우 생략된 값에는 NULL 값이 들어간다.
+```SQL
+INSERT INTO testtbl1(id, userName) VALUES (2, '설현');
+```
+
+열의 순서를 바꿔서 입력하고 싶을 때는 꼭 열 이름을 입력할 순서에 맞춰 나열해 줘야 한다.
+```sql
+INSERT INTO testtbl1(userName, age, id) VALUES ('하니', 26, 3);
+```
+
+**자동으로 증가하는 AUTO_INCREMENT**
+
+테이블의 속성이 AUTO_INCREMENT로 되어있다면, INSERT에서는 해당열이 없다고 생각하고 입력하면 된다. AUTO_INCREMENT는 자동으로 1부터 증가하는 값을 입력해주며 이를 지정할 때는 꼭 PRIMARY KEY 또는 UNIQUE로 지정해주고 데이터 형은 숫자 형식만 사용할 수 있다.
+```SQL
+USE sqldb;
+CREATE TABLE testtbl2
+	(id INT AUTO_INCREMENT PRIMARY KEY,
+    userName CHAR(3),
+    age INT);
+INSERT INTO testtbl2 VALUES (NULL, '지민', 25);
+INSERT INTO testtbl2 VALUES (NULL, '유나', 22);
+INSERT INTO testtbl2 VALUES (NULL, '유경', 21);
+
+SELECT * FROM testtbl2;
+```
+
+현재 어느 숫자까지 증가되었는지 확인하려면 `SELECT LAST_INSERT_ID();` 쿼리를 사용해 마지막에 입력된 값을 알 수 있다. `AUTO_INCREMENT` 입력값을 100부터 입력되도록 변경하고 싶다면 다음과 같이 수행하면 된다.
+```sql
+ALTER TABLE testtbl2 AUTO_INCREMENT=100;
+INSERT INTO testtbl2 VALUES (NULL, '찬미', 23);
+SELECT * FROM testtbl2;
+```
+
+증가 값을 지정하려면 서버 변수인 `@@auto_increment_increment` 변수를 변경 시켜 주어야 한다.
+```sql
+USE sqldb;
+CREATE TABLE testtbl3
+	(id INT AUTO_INCREMENT PRIMARY KEY,
+    userName CHAR(3),
+    age INT );
+ALTER TABLE testtbl3 AUTO_INCREMENT=1000;
+SET @@auto_increment_increment = 3;
+INSERT INTO testtbl3 VALUES (NULL, '나연', 20);
+INSERT INTO testtbl3 VALUES (NULL, '정연', 18);
+INSERT INTO testtbl3 VALUES (NULL, '모모', 19);
+SELECT * FROM testtbl3;
+```
+
+> 여러 개의 행을 한번에 입력할 수도 있다.
+> ```sql
+> INSERT INTO 테이블이름 VALUES (값1), (값2), ...;
+> ```
+
+**대량의 샘플 데이터 생성**
+
+다른 테이블의 데이터를 가져와서 대량으로 입력할 수 있다.
+`SELECT`문의 결과 열의 개수는 `INSERT` 할 열의 개수와 일치해야 한다.
+```SQL
+INSERT INTO 테이블이름 (열 이름1, 열 이름2,...)
+    SELECT ... ;
+```
+```sql
+USE sqldb;
+CREATE TABLE testtbl4
+	(id INT, Fname VARCHAR(50), Lname VARCHAR(50));
+INSERT INTO testtbl4
+	SELECT emp_no, first_name, last_name
+		FROM employees.employees;
+SELECT * FROM testtbl4;
+```
+```sql
+CREATE TABLE testtbl5
+    (SELECT emp_no, first_name, last_name FROM employees.employees);
+```
+
+###### 6.2.2 데이터의 수정: UPDATE
+---
+```SQL
+UPDATE 테이블이름
+    SET 열1=값1, 열2=값2 ...
+    WHERE 조건;
+```
+`WHERE`절은 생략가능하지만, 생략하면 테이블의 전체 행이 변경된다.
+```SQL
+UPDATE testtbl4
+    SET Lname = '없음';
+    WHERE Fname = 'Kyoichi';
+```
+예를 들어 구매 테이블에서 단가가 모두 현재에서 1.5배 인상되었다면 다음과 같이 사용할 수 있다.
+```sql
+UPDATE buytbl SET price = price * 1.5;
+```
+
+###### 6.2.3 데이터의 삭제: DELETE FROM
+---
+```sql
+DELETE FROM 테이블이름 WHERE 조건;
+```
+상위 5건만
+```SQL
+DELETE FROM testtbl4 WHERE Fname = 'Aamer' LIMIT = 5;
+```
+> ```SQL
+> DELETE FROM bigttbl1;
+> DROP TABLE bigttbl2;
+> TRUNCATE TABLE bigttbl3;
+> ```
+> - `DELETE`: DML문. 트랜잭션 로그를 기록하므로 삭제가 오래걸린다.
+> - `DROP`: DDL문. 테이블 자체를 삭제한다. 즉, 테이블의 구조 자체를 삭제한다. 또 DDL은 트랜잭션을 발생시키지 않느다
+> - `TRUNCATE`: DDL문. DELETE와 동일하지만 DDL이므로 트랜잭션을 발생시키지 않아 속도가 빠르다.
+
+
+###### 6.2.4 조건부 데이터 입력, 변경
+---
+멤버테이블 정의
+```sql
+CREATE TABLE membertbl (SELECT userID, name, addr FROM usertbl LIMIT 3);
+ALTER TABLE membertbl
+	ADD CONSTRAINT pk_membertbl PRIMARY KEY (userID); -- PK지정
+SELECT * FROM membertbl;
+```
+여러 건 입력 시 PK중복되면 건너 뛰고 나머지 입력.
+```sql
+insert ignore into membertbl values ('BBK', '비비코', '미국');
+insert ignore into membertbl values ('SJH', '서장훈', '서울');
+```
+PK중복되면 데이터가 수정된다.
+```sql
+insert into membertbl values ('BBK', '비비코', '미국')
+	on DUPLICATE KEY UPDATE name='비비코', addr='미국';
+```
+
+
+##### 6.3 WITH절과 CTE
+---
+###### 6.3.1 WITH절과 CTE개요
+---
+WITH절은 CTE(Common Table Expression)을 표현하기 위한 구문으로 MySQL8.0 이후부터 사용가능하다. CTE는 기존의 뷰, 파생테이블, 임시 테이블 등으로 사용되던 것을 대신할 수 있고 더 간결하게 보여진다. CTE는 ANSI-SQL99 표준에서 나오며 최근 DBMS는 대개 호환되므로 다른 DBMS에서도 비슷하게 응용된다.
+
+###### 6.3.2 비재귀적 CTE
+---
+```sql
+WITH CTE_테이블이름(열 이름)
+AS
+(
+    쿼리문
+)
+SELECT 열 이름 FROM CTE_테이블이름 ;
+```
+ex)
+```SQL
+WITH abc(userid, total)
+AS
+(SELECT userid, SUM(price*amount)
+    FROM buytbl, GROUP BY userid )
+SELECT * FROM abc ORDER BY total DESC ;
+```
+다음과 같이 중복 CTE 허용
+```SQL
+WITH
+AAA (컬럼들)
+AS ( AAA의 쿼리문 ),
+    BBB (컬럼들)
+        AS (BBB의 쿼리문),
+    CCC (컬럼들)
+        AS (CCC의 쿼리문)
+SELECT * FROM [AAA or BBB or CCC];
+```
+CCC 쿼리문에서는 AAA나 BBB를 참조할 수 있지만 AAA나 BBB의 쿼리문에서는 아직 정의되지 않은 CCC를 참조할 수 없다. 즉, 아직 정의되지 않은 CTE를 미리 참조할 수 없다.

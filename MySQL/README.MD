@@ -1,5 +1,7 @@
 ## MySQL
 
+- [NOT](./etc/NOT.md)
+
 ### 이것이 MySQL이다
 1. DBMS 개요와 MySQL 소개
 2. MySQL 설치
