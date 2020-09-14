@@ -9,3 +9,4 @@
 4. [데이터베이스 모델링](./This_is_MySQL/Chapter4.md)
 5. MySQL 유틸리티 사용법
 6. [SQL 기본](./This_is_MySQL/Chapter6.md)
+7. [SQL 고급](./This_is_MySQL/Chapter7.md)

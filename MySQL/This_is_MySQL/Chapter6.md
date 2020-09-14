@@ -1,4 +1,4 @@
-#### Chapter 4. SQL 기본
+#### Chapter 6. SQL 기본
 ---
 ##### 6.1 SELECT문
 ---

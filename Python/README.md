@@ -5,3 +5,4 @@
 - [re](etc/re.md)
 - [함수 매개변수로 받은 정수형 변수](etc/int_in_func.md)
 - [global](etc/global.md)
+- [max(), min()](./etc/max_min.md)
