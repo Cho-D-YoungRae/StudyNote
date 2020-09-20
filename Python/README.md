@@ -6,3 +6,6 @@
 - [함수 매개변수로 받은 정수형 변수](etc/int_in_func.md)
 - [global](etc/global.md)
 - [max(), min()](./etc/max_min.md)
+
+
+### [파이썬 증권 데이터 분석](./StockAnalysisInPython)
