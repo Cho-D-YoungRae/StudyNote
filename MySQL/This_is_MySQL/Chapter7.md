@@ -316,6 +316,43 @@ SELECT JSON_INSERT(@json, '$.usertbl[0].mDate', '2020-09-09');
 SELECT JSON_REPLACE(@json, '$.usertbl[0].name', '홍길동');
 -- 지정된 항목 삭제
 SELECT JSON_REMOVE(@json, '$.usertbl[0]');
-
+```
 
 ##### 7.2 조인
+---
+###### 7.2.1 INNER JOIN(내부 조인)
+---
+```SQL
+SELECT <열 목록>
+FROM <첫 번째 테이블>
+  INNER JOIN <두 번째 테이블> -- JOIN만 써도 INNER JOIN
+  ON <조인될 조건>
+[WHERE 검색조건]
+```
+- `ON`과 `WHERE` 구문에는 '테이블이름.열이름' 형식으로 되어야한다. 두 개의 테이블에 동일한 열 이름이 모두 존재하기 때문이다. 
+
+```sql
+select B.userID, U.name, B.prodName, U.addr, concat(U.mobile1, U.mobile2) as '연락처'
+	from buytbl B           -- 별칭
+		inner join usertbl U  -- 별칭
+			on B.userID = U.userID
+	order by B.num;
+```
+
+> - `INNER JOIN`: 양쪽 테이블에 모두 내용이 있는 것만 조인
+> - `OUTER JOIN`: 한쪽에만 내용이 있어도 조인
+
+**실습4**
+
+다대다관계의 테이블을 두 테이블의 사이에 연결 테이블을 둬서 연결 테이블과 두 테이블이 일대다 관계를 맺도록 하여 JOIN
+```SQL
+SELECT S.stdName, S.addr, C.clubName, C.roomNo
+  FROM stdtbl S                 --학생 테이블
+  INNER JOIN stdclubtbl SC      --두 테이블 사이 연결 테이블
+    ON S.stdName = SC.stdName
+  INNER JOIN clubtbl C          --동아리 테이블
+    ON SC.clubName = C.clubName
+```
+한 학생은 여러개의 동아리에 가입할 수 있고, 하나의 동아리에는 여러 명의 학생이 가입할 수 있으므로 두 개는 서로 다대다 관계를 이룬다. 이를 `stdclubtbl`을 통해서 일대다 관계를 만들어준다. 
+###### 7.2.2 OUTER JOIN(외부 조인)
+---
