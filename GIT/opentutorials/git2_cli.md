@@ -9,6 +9,8 @@
 - `git commit -m "commit message"`
   - \-m 뒤에 없이 써도 이후에 메세지 작성할 수 있다.
     - 여러줄의 커밋 메세지 쓸 수 있다.
+- `git commit --amend`
+  - 이전 커밋메세지 수정
 
 ###### 5. 여러개의 파일을 버전으로 만들기
 - `git log --stat`
@@ -52,3 +54,14 @@
   - 이전 단계로 새로운 커밋이 생성된다.
   - 어느 특정 커밋으로 돌아가려면 역순으로 단계별로 커밋
   - 커밋 삭제하지 않고 되돌리기
+
+###### stash 수정중인 파일 감추기 (나의 추가 내용)
+- `git stash`
+  - 수정 중인 파일 감추기
+  - 파일이 tacked 상태여야 한다.
+- `git stash list`
+- `git stash pop`
+- `git stash apply`
+  - 가장 최근 항목 되돌리지만 삭제 안 함
+- `git stash drop`
+  - 가장 최근 항복 삭제
