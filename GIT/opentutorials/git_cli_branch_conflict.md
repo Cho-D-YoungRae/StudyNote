@@ -1,4 +1,4 @@
-#### GIT3 - CLI 브랜치 & 충돌
+#### GIT - CLI 브랜치 & 충돌
 
 ###### 3. 브랜치의 기본 사용법
 - `git log --all --graph --oneline`

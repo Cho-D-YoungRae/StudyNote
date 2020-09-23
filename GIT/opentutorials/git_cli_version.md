@@ -1,4 +1,4 @@
-#### GIT2 - CLI 버전관리
+#### GIT - CLI 버전관리
 
 ###### 3. 버전관리의 시작
 - `git init`
@@ -30,6 +30,10 @@
     - 다시 최신으로 돌아간다.
   - `git checkout -- 파일이름`
     - 작업트리의 파일 수정된 내용을 취소하고 가장 최신 버전 상태로
+  - `git checkout -b 브랜치명`
+    - 브랜치 없으면 생성 후 이동
+
+
 ###### 8. 보충수업
 - `git commit -am "commit message"`
   - add와 commit 동시에

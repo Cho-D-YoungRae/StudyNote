@@ -171,7 +171,7 @@ SELECT name, height FROM usertbl
 SOME은 ANY와 동일하다.
 
 ```sql
--- 'ANY(서브쿼리)' 와 'IN(서브쿼리)'는 동일하다.
+-- '=ANY(서브쿼리)' 와 'IN(서브쿼리)'는 동일하다.
 SELECT name, height FROM usertbl
     where height = ALL(SELECT height FROM usertbl WHERE addr = '경남');
 
