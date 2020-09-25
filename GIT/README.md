@@ -7,3 +7,5 @@
 - [git - CLI(branch & conflict)](./opentutorials/git_cli_branch_conflict.md)
 - [git - CLI(backup)](./opentutorials/git_cli_backup.md)
 - [git - CLI(협업)](./opentutorials/git_cli_cooperation.md)
+- [git - cherry-pick & rebase](./opentutorials/git_cherrypick_rebase.md)
+- [git - Reset & Revert](./opentutorials/git_reset_revert.md)

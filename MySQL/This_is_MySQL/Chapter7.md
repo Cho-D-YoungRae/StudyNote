@@ -362,5 +362,68 @@ SELECT S.stdName, S.addr, C.clubName, C.roomNo
     ON SC.clubName = C.clubName
 ```
 한 학생은 여러개의 동아리에 가입할 수 있고, 하나의 동아리에는 여러 명의 학생이 가입할 수 있으므로 두 개는 서로 다대다 관계를 이룬다. 이를 `stdclubtbl`을 통해서 일대다 관계를 만들어준다. 
+
 ###### 7.2.2 OUTER JOIN(외부 조인)
+---
+```SQL
+SELECT <열 목록>
+FROM <첫 번째 테이블(LEFT 테이블)>
+  <LEFT | RIGHT | FULL> OUTER JOIN <두 번째 테이블(RIGHT 테이블)>
+  ON <조인될 조건>
+[WHERE 검색조건];
+```
+- `LEFT`: 왼쪽 테이블의 것은 모두 출력되어야 한다.
+- `FULL`: `LEFT`와 `RIGHT`가 합쳐진 것. 양쪽 모두 조건이 일치하지 않는것.
+- `LEFT JOIN`이라고만 써도 된다.
+
+
+###### 7.2.3 CROSS JOIN(상호 조인)
+---
+> 한쪽 테이블의 모든 행들과 다른 쪽 테이블의 모든 행을 조인시킨다. 결과 개수는 두 테이블 개수를 곱한 개수.
+
+```SQL
+SELECT <열 목록>
+  FROM 테이블1
+    CROSS JOIN 테이블2;
+```
+> FROM 에 두 테이블을 나열하는 형태로도 가능하지만, 권장되지 않는다.
+
+- `ON`구문을 사용할 수 없다.
+- 테스트로 사용할 많은 용량의 데이터를 생성할 때 주로 사용한다.
+
+###### 7.2.4 SELF JOIN(자체 조인)
+---
+> 별도의 구문이 아니라 자기 자신과 조인한다는 의미
+
+**실습6**
+```SQL
+SELECT A.emp AS '부하직원', B.emp  AS '직속상관'
+  FROM emptbl A
+    INNER JOIN emptbl B
+      ON A.manager = B.emp;
+```      
+
+###### 7.2.5 UNION / UNION ALL / NOT IN / IN
+---
+```SQL
+SELECT 문장1
+  UNION [ALL]
+SELECT 문장2
+```
+- 두 쿼리의 결과를 행으로 합치는 것
+- 두 `SELECT` 결과 열의 개수가 같아야하고, 열 단위로 같거나 서로 호환되는 데이터 형식이어야 한다.
+- 중복된 열은 제거된다.
+  - `ALL`을 사용하면 중복된 열까지 모두 출력된다.
+
+*NOT IN*
+```SQL
+SELECT name, CONCAT(mobile1, mobile2) AS '전화번호', FROM usertbl
+  WHERE name NOT IN (SELECT name FROM usertbl WHERE mobile1 IS NULL);
+```
+*IN*
+```SQL
+SELECT name, CONCAT(mobile1, mobile2) AS '전화번호', FROM usertbl
+  WHERE name NOT IN (SELECT name FROM usertbl WHERE mobile1 IS NULL);
+```
+##### 7.3 SQL 프로그래밍
 ---

@@ -339,3 +339,116 @@ KRX(Index=2018, KOSPI=2041, KOSDAQ=675)
 
 
 ##### 3.4 주식 비교하기
+---
+###### 3.4.1 야후 파이낸스로 주식 시세 구하기
+---
+```python
+from pandas_datareader import data as pdr
+import yfinance as yf
+
+yf.pdr_override()
+
+sec = pdr.get_data_yahoo('005930.KS', start='2020-09-25')
+msft = pdr.get_data_yahoo('MSFT', start='2020-09-25')
+```
+- `get_data_yahoo(조회할 주식 종목 [, start=조회 기간의 시작일] [, end=조회 기간의 종료일])`
+  - 주식 종목: 문자열 혹은 리스트
+    - 국내 기업 주식 데이터: `.KS`(코스피), `.KQ`(코스닥) 을 붙여준다.
+    - 미국 기억의 주식 데이터: `AAPL`(애플) 처럼 심볼을 이용
+      - www.nasdaq.com/screening/company-list.aspx
+  - 조회 기간을생략하면 야후가 보유한 데이터에서 제일 오래된 일자부터 제일 최신 일자까지 설정된다.
+
+```python
+# 맨 앞 10행. 인수를 생략하면 기본 값 5
+sec.head(10)
+
+# 거래량(Volume) 칼럼을 제거한 새로운 데이터프레임 생성
+tmp_msft = msft.drop(columns='Volume')
+# 제일 뒤 5행
+tmp_msft.tail()
+
+sec.index       # 인덱스 확인
+sec.columns     # 칼럼 확인
+```
+
+```python
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    sec = pdr.get_data_yahoo('005930.KS', start='2018-05-04')
+    msft = pdr.get_data_yahoo('MSFT', start='2018-05-04')
+
+    plt.plot(sec.index, sec.Close, 'b', label='Samsung Electronics')
+    plt.plot(msft.index, msft.Close, 'r--', label='Microsoft')
+    plt.legend(loc='best')
+    plt.show()
+```
+- `plot(x, y, 마커 형태 [, label='Label'])`
+- 50000원의 삼성과 130달러 대의 마이크로소프트 주가를 한 번에 표시하다 보니 비교가 잘 되지 않는다.
+
+
+###### 3.4.2 일간 변동률로 주가 비교하기
+---
+> 일간 변동률(daily percent change)을 구하면 가격이 다른 두 주가의 수익률을 비교할 수 있다.<br>`Rt1(오늘 변동률) = ((Rt(오늘 종가) - Rt-1(어제 종가) / Rt-1(어제 종가))) * 100`
+
+```python
+# 위의 식을 파이썬으로 옮긴 것
+# shift() 함수는 데이터를 n행씩 뒤로 이동
+sec_dpc = (sec['Close'] / sec['Close'].shift(1) - 1) * 100
+
+# 위에서 shift로 한 칸씩 미뤄서 첫 번째 값이 NaN이 된다.
+# 그렇기 때문에 0으로 변경
+sec_dpc.iloc[0] = 0
+sec_dpc.head()
+```
+- 데이터 프레임의 한 칼럼은 시리즈
+
+###### 3.4.3 주가 일간 변동률 히스토그램
+---
+> 히스토그램은 도수 분포를 나타내는 그래프로서, 데이터값들에 대한 구간별 빈도수를 막대 현태로 나타낸다. 이때 구간 수를 bins라고 한다.
+```python
+sec_dpc = (sec['Close'] / sec['Close'].shift(1) - 1) * 100
+sec_dpc.iloc[0] = 0
+plt.hist(sec_dpc, bins=18)
+plt.grid(True)
+plt.show()
+```
+- `hist()`: 히스토그램
+  - `bins` 기본값 10
+
+###### 3.4.4 일간 변동률 누적합 구하기
+---
+> 전체적인 변동률을 비교해보려면 일간 변동률의 누적합을 계산해야한다. 시리즈의 `cumsum()` 함수를 이용하여 구할 수 있다.
+```python
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    sec = pdr.get_data_yahoo('005930.KS', start='2018-05-04')
+    msft = pdr.get_data_yahoo('MSFT', start='2018-05-04')
+
+    sec_dpc = (sec['Close'] / sec['Close'].shift(1) - 1) * 100
+    sec_dpc.iloc[0] = 0
+    sec_dpc_cs = sec_dpc.cumsum()   # 일간 변동률의 합
+
+    msft_dpc = (msft['Close'] / msft['Close'].shift(1) - 1) * 100
+    msft_dpc.iloc[0] = 0
+    msft_dpc_cs = msft_dpc.cumsum() # 일간 변동률의 합
+
+    plt.plot(sec.index, sec_dpc_cs, 'b', label='Samsung Electronics')
+    plt.plot(msft.index, msft_dpc_cs, 'r--', label='Microsoft')
+    plt.ylabel('Change %')
+    plt.grid(True)
+    plt.legend(loc='best')
+    plt.show()
+```
+
+##### 3.5 최대 손실 낙폭
+---
