@@ -427,3 +427,89 @@ SELECT name, CONCAT(mobile1, mobile2) AS '전화번호', FROM usertbl
 ```
 ##### 7.3 SQL 프로그래밍
 ---
+스토어드 프로시저 형식 복습
+```sql
+DELIMITER $$
+CREATE PROCEDURE 스토어드 프로시저이름()
+BEGIN
+  SQL 프로그래밍 코딩
+END $$
+DELIMITER $$
+CALL 스토어드 프로시저이름();
+```
+- `DELIMITER $$` ~ `END $$` 까지는 스토어드 프로시저의 코딩할 부분을 묶은 것
+  - My SQL 종료문자는 세미콜론(;)인데 위 구간에서도 세미콜론이 종료 문자이면 어디까지가 스토어드 프로시저인지 구별이 어려워진다.
+  - 그러므로 `END $$`가 나올 떄까지를 스토어드 프로시저로 인식하게 하는 것.
+  - `DELIMITER ;` 로 다시 종료문자를 세미콜론으로 돌려놓는다
+
+> 구분자는 다른 문자를 사용해도 된다. 또, 연속으로 2개가 아니라 1개만 사용해도 되지만 다른 기호와 중복되지 않도록 2개를 연속해서 사용하는 것이 좋다.
+
+###### 7.3.1 IF...ELSE
+---
+```SQL
+IF <부울 표현식> THEN
+  SQL문장들1...
+ELSE
+  SQL문장들2...
+END IF;
+```
+- `SQL문장들1` 또는 `SQL문장들2`가 한 개의 문장이라면 BEGIN...END는 생략할 수 있다.
+- False일 때 아무것도 할게 없다면, ELSE 이하 생략
+
+###### 7.3.2 CASE
+---
+다중분기
+- `ELSEIF`
+- `CASE`
+
+```SQL
+CASE
+  WHEN 조건1  THEN  ...
+  WHEN 조건2  THEN  ...
+  WHEN 조건3 THEN  ...
+  ELSE ...
+END CASE;
+```
+
+###### 7.3.3 WHILE 과 ITERATE/LEAVE
+---
+```SQL
+WHILE <부울 식> DO
+  SQL 명령문들...
+END WHILE;
+```
+
+- `ITERATE 라벨`: 지정한 label문으로 가서 계속 진행
+- `LEAVE 라벨`: 지정한 label문 떠남
+
+###### 7.3.4 오류 처리
+---
+```sql
+DECLARE 액션 HANDLER FOR 오류조건 처리할_문장;
+```
+- 액션
+  - 오류 발생 시에 행동을 정의하는데 CONTINUE와 EXIT 둘 중 하나를 사용한다. CONTINUE가 나오면 제일 뒤의 '처리할_문장' 부분이 처리된다.
+- 오류조건
+  - 어떤 오류를 처리할 것인지를 지정한다. 오류 코드 숫자, 상태코드 등이 온다.
+- 처리할 문장
+  - 처리할 문장이 하나라면 한 문장이 나오면 되며, 처리할 문장이 여러 개일 경우에는 BEGIN...END로 묶어준다.
+
+
+###### 7.3.5 문장 SQL
+---
+- `PREPARE`: SQL문을 실행하지는 않고 미리 준비
+- `EXECUTE`: 준비한 쿼리문을 실행
+- `DEALLOCATE PREPARE`: 문장을 해제
+- `USING`: `PREPARE`문에서 ? 처리해둔 곳 채울 수 있다.
+
+```SQL
+USE sqldb;
+DROP TABLE IF EXISTS myTable;
+CREATE TABLE myTable (id INT AUTO_INCREMENT PRIMARY KEY, mDate DATETIME);
+SET @curDATE = CURRENT_TIMESTAMP(); -- 현재 날짜와 시간
+PREPARE myQuery FROM 'INSERT INTO myTable VALUES(NULL, ?)';
+EXECUTE myQuery USING @curDATE;
+DEALLOCATE PREPARE myQuery;
+SELECT * FROM myTable;
+```
+
