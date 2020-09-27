@@ -452,3 +452,203 @@ if __name__ == '__main__':
 
 ##### 3.5 최대 손실 낙폭
 ---
+MDD(Maximum Drawdown, 최대 손실 낙폭) 은 특정 기간에 발생한 최고점에서 최저점가지의 가장 큰 손실을 의미한다.
+> MDD = (최저점 - 최고점) / 최고점
+
+###### 3.5.2 서브프라임 당시의 MDD
+---
+`시리즈.rolling(윈도우 크기 [, min_periods=1]) [.집계 함수()]`
+- 시리즈에서 윈도우 크기에 해당하는 개수만큼 데이터를 추출하여 집계함수에 해당하는 연산을 실시한다.
+- 집계함수
+  - `max()`
+  - `mean()`
+  - `min()`
+- `min_periods` 를 지정하면 데이터 개수가 윈도우 크기에 못 미치더라도 이 개수를 만족하면 연산을 수행한다.
+
+```python
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    kospi = pdr.get_data_yahoo('^KS11', '2004-01-04')   # 1
+
+    window = 252    # 2
+    peak = kospi['Adj Close'].rolling(window, min_periods=1).max()  # 3
+    drawdown = kospi['Adj Close']/peak - 1.0    # 4
+    max_dd = drawdown.rolling(window, min_periods=1).min()  # 5
+
+    plt.figure(figsize=(9,7))
+    plt.subplot(211)
+    kospi['Close'].plot(label='KOSPI', title='KOSPI MDD', grid=True, legend=True)
+    plt.subplot(212)
+    drawdown.plot(c='blue', label='KOSPI DD', grid=True, legend=True)
+    max_dd.plot(c='red', label='KOSPI MDD', grid=True, legend=True)
+    plt.show()
+```
+1. KOSPI 지수 데이터를 다운로드한다. KOSPI 지수의 심볼은 `^KS11`이다.
+2. 산정 기간에 해당하는 `window`값은 1년 동안의 개장일을 252로 어림잠아 설정했다.
+3. KOSPI 종가 칼럼에서 1년 (거래일 기준) 기간 단위로 최고치 peak를 구한다.
+4. `drawdown`은 최고치(peak) 대비 현재 KOSPI 종가가 얼마나 하락했는지를 구한다.
+5. `drawdown`에서 1년 기간 단위로 최저치 `max_dd`를 구한다. 마이너스 값이기 때문에 최저치가 바로 최대 손실 낙폭이 된다.
+
+`max_dd.min()`
+- 최저값
+`max_dd[max_dd==값]`
+- 인덱싱
+
+##### 3.6 회귀 분석과 상관 관계
+---
+회귀 분석은 데이터의 상관관계를 분석하는 데 쓰이는 통계 분석 방법이다.
+
+###### 3.6.1 KOSPI와 다우존스 지수 비교
+---
+```python
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    dow = pdr.get_data_yahoo('^DJI', '2000-01-04')      # 다우존스 지수
+    kospi = pdr.get_data_yahoo('^KS11', '2000-01-04')   # 코스피
+
+    plt.figure(figsize=(9, 5))
+    plt.plot(dow.index, dow.Close, 'r--', label='Dow Jones Industrial')
+    plt.plot(kospi.index, kospi.Close, 'b', label='KOSPI')
+    plt.grid(True)
+    plt.legend(loc='best')
+    plt.show()
+```
+
+###### 3.6.2 지수화 비교
+---
+일별 종가만으로는 KOSPI와 다우존스 지수의 상관관계를 비교하기가 어려웠다. 현재 종가를 특정 시점의 종가로 나누어 변동률을 구해보자.
+
+```python
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    dow = pdr.get_data_yahoo('^DJI', '2000-01-04')
+    kospi = pdr.get_data_yahoo('^KS11', '2000-01-04')
+
+    d = (dow.Close / dow.Close.loc['2000-01-04']) * 100
+    k = (kospi.Close / kospi.Close.loc['2000-01-04']) * 100
+
+    plt.figure(figsize=(9, 5))
+    plt.plot(d.index, d, 'r--', label='Dow Jones Industrial Average')
+    plt.plot(k.index, k, 'b', label='KOSPI')
+    plt.grid(True)
+    plt.legend(loc='best')
+    plt.show()
+```
+
+###### 3.6.3 산점도 분석
+---
+다우존스 지수와 KOSPI의 관계를 분석하는데 산점도(Scatter plot)를 사용해보자. 산점도란 독립변수 x와 종속변수 y의 상관관계를 확인할 때 쓰는 그래프다. 
+```python
+import pandas as pd
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    dow = pdr.get_data_yahoo('^DJI', '2000-01-04')
+    kospi = pdr.get_data_yahoo('^KS11', '2000-01-04')
+
+    df = pd.DataFrame({'DOW':dow['Close'], 'KOSPI': kospi['Close']})
+    df = df.fillna(method='bfill')
+    df = df.fillna(method='ffill')
+
+    plt.figure(figsize=(7, 7))
+    plt.scatter(df['DOW'], df['KOSPI'], marker='.')
+    plt.xlabel('Dow Jones Industrial Average')
+    plt.ylabel('KOSPI')
+    plt.show()
+```
+- `len(dow)`, `len(kospi)` 를 통해 확인해보면 길이가 다른 것을 알 수 있다.
+- 산점도를 그리려면 x, y의 사이즈가 동일해야 한다.
+- 다우존스 지수의 종가 칼럼과 KOSPI 지수의 종가 칼럼을 합쳐서 데이터프레임 df를 생성하면 한 쪽 데이터가 없으면 NaN으로 자동으로 채워진다.
+- 산점도를 출력하려면 NaN을 제거해야한다.
+- 데이터프레임의 `fillna()` 함수를 이용하여 NaN을 채울 수 있다.
+  - 인수로 `bfill`(backward fill)을 주면 뒤에 있는 값으로 NaN 을 덮어쓴다.
+  - 인수로 `ffill`(forkward fill)을 주면 앞에 있는 값으로 NaN 을 덮어쓴다.
+- bfill만 하면 마지막 행의 NaN은 없앨 수 없으므로 ffill도 진행한다.
+- `dropna()` 함수를 사용하면 NaN이 있는 행을 한 번에 제거할 수 있지만 표본 데이터 수가 적어지므로 상황에 맞게 사용한다.
+
+###### 3.6.4 사이파이 선형 회귀 분석
+---
+ 사이파이(SciPy)는 파이썬 기반 수학, 과학, 엔지니어링용 핵심 패키지 모음이다. 
+
+ ###### 3.6.5 선형 회귀 분석
+ ---
+ 회귀 모델이란 연속적인 데이터 Y와 이 Y의 원인이 되는 X 간의 관계를 추정하는 관계식을 의미한다. 사이파이 패키지의 서브 패키지인 스탯츠(stats)는 다양한 통계함수를 제공한다. `linregress()` 함수를 이용하면 시리즈 객체 두 개만으로 간단히 선형 회귀 모델을 생성하여 분석할 수 있다.
+ ```python
+ from scipy import stats
+ model = stats.linregress(독립변수 x, 종속변수 y)
+ ```
+- `slope`: 기울기
+- `intercepy`: y절편
+- `rvalue`: r값(상관계수)
+- `pvalue`: p값
+- `stderr`: 표준편차
+
+ ##### 3.7 상관계수에 따른 리스크 완화
+ ---
+ 상관계수(Coefficient of Correlation)란 독립변수와 종속변수 사이의 상관관계의 정도를 나타내는 수치다. 상관계수 r은 -1 <= r <= 1 을 만족시키며 상관관계가 없을 때 r = 0 이다. A자산과 B자산의 상관계수가 1이면, A자산 가치가 x%만큼 상승할 때 B자산 가치도 x%만큼 상승한다. -1이면 B자산 가치는 x%만큼 하락한다.
+
+###### 3.7.1 데이터프레임으로 상관계수 구하기
+---
+`df.corr()`
+
+###### 3.7.2 시리즈로 상관계수 구하기
+---
+`df['DOW'].corr(df['KOSPI'])`
+
+###### 3.7.3 결정계수 구하기
+---
+결정계수(R-squared)는 관측된 데이터에서 추정한 회귀선이 실제로 데이터를 어느 정도 설명하는지를 나타내는 계수로, 두 변수의 상관관계 정도를 나타내는 상관계수(R value)를 제곱한 값이다. 결정계수가 1이면 모든 표본 관측치가 추정된 회귀선 상에만 있다는 의미다. 0이면 추정된 회귀선이 변수 사이의 관계를 전혀 설명하지 못 한다는 의미다.
+```python
+import pandas as pd
+from pandas_datareader import data as pdr
+import yfinance as yf
+import matplotlib.pyplot as plt
+from scipy import stats
+
+
+if __name__ == '__main__':
+    yf.pdr_override()
+
+    dow = pdr.get_data_yahoo('^DJI', '2000-01-04')
+    kospi = pdr.get_data_yahoo('^KS11', '2000-01-04')
+
+    df = pd.DataFrame({'X':dow['Close'], 'Y': kospi['Close']})
+    df = df.fillna(method='bfill')
+    df = df.fillna(method='ffill')
+
+    regr = stats.linregress(df.X, df.Y)     # 1
+    regr_line = f'Y = {regr.slope:.2f} * X + {regr.intercept:.2f}'  # 2
+
+    plt.figure(figsize=(7, 7))
+    plt.plot(df.X, df.Y, '.')   # 3
+    plt.plot(df.X, regr.slope * df.X + regr.intercept, 'r') # 4
+    plt.legend(['DOW x KOSPI', regr_line])
+    plt.title(f'DOW x KOSPI (R = {regr.rvalue:.2f})')
+    plt.xlabel('Dow Jones Industrial Average')
+    plt.ylabel('KOSPI')
+    plt.show()
+```
+1. 다우존스 지수 X와 KOSPI 지수 Y로 선형회귀 모델 객체 regr을 생성한다.
+2. 범례에 회귀식을 표시해주는 레이블 문자다.
+3. 산점도
+4. 회귀선
