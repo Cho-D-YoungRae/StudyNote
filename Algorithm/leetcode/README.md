@@ -8,3 +8,4 @@
 - [49_Group_Anagrams](./problems/49_Group_Anagrams/49_Group_Anagrams.md)
 - [5_Longest_Palindromic_Substring *](./problems/5_Longest_Palindromic_Substring/5_Longest_Palindromic_Substring.md) 
 - [1_Two_Sum](./problems/1_Two_Sum/1_Two_Sum.md)
+- [42_Trapping_Rain_Water \*](./problems/42_Trapping_Rain_Water/42_Trapping_Rain_Water.md)
