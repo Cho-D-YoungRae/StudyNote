@@ -1,7 +1,7 @@
 #### [344_Reverse_String](https://leetcode.com/problems/reverse-string/)
 
 
-###### My Solution #1 - python
+###### My Solution - python
 ```python
 class Solution:
     def reverseString(self, s: List[str]) -> None:

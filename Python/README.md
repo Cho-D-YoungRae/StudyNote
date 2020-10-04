@@ -5,6 +5,7 @@
 - [max(), min()](./etc/max_min.md)
 
 ### modules
-- [itertools](modules/itertools.md)
-- [bisect](modules/bisect.md)
-- [re](modules/re.md)
+- [itertools](./modules/itertools.md)
+- [bisect](./modules/bisect.md)
+- [re](./modules/re.md)
+- [tkinter](./modules/tkinter.md)

@@ -9,3 +9,5 @@
 - [5_Longest_Palindromic_Substring *](./problems/5_Longest_Palindromic_Substring/5_Longest_Palindromic_Substring.md) 
 - [1_Two_Sum](./problems/1_Two_Sum/1_Two_Sum.md)
 - [42_Trapping_Rain_Water \*](./problems/42_Trapping_Rain_Water/42_Trapping_Rain_Water.md)
+- [15_3Sum](./problems/15_3Sum/15_3Sum.md)
+- [561_Array_Partition_I](./problems/561_Array_Partition_I/561_Array_Partition_I.md)
