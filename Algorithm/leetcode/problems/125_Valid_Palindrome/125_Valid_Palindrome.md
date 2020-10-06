@@ -1,7 +1,7 @@
 #### [125_Valid_Palindrome](https://leetcode.com/problems/valid-palindrome/submissions/)
 
 
-**첫 풀이**
+###### My Solution 1
 ```python
 class Solution:
     def isPalindrome(self, s: str) -> bool:
@@ -19,7 +19,7 @@ class Solution:
 > Memory Usage: 15.9 MB, less than 17.07% of Python3 online submissions for Valid Palindrome.
 
 
-**데크 이용**
+###### My Solution 2
 ```python
 import collections
 
