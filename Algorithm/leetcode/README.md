@@ -15,3 +15,4 @@
 - [121_Best_Time_to_Buy_and_Sell_Stock](./problems/121_Best_Time_to_Buy_and_Sell_Stock/121_Best_Time_to_Buy_and_Sell_Stock.md)
 - [234_Palindrome_Linked_List](./problems/234_Palindrome_Linked_List/234_Palindrome_Linked_List.md)
 - [21_Merge_Two_Sorted_Lists](./problems/21_Merge_Two_Sorted_Lists/21_Merge_Two_Sorted_Lists.md)
+- [206_Reverse_Linked_List](./problems/206_Reverse_Linked_List/206_Reverse_Linked_List.md)
