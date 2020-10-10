@@ -30,3 +30,5 @@ class Solution:
 > Runtime: 36 ms, faster than 77.38% of Python3 online submissions for Merge Two Sorted Lists.
 
 > Memory Usage: 14 MB, less than 19.66% of Python3 online submissions for Merge Two Sorted Lists.
+
+###### 교재 풀이 확인
