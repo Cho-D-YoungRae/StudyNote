@@ -19,3 +19,4 @@
 - [2_Add_Two_Numbers \*](./problems/2_Add_Two_Numbers/2_Add_Two_Numbers.md)
 - [24_Swap_Nodes_in_Pairs](./problems/24_Swap_Nodes_in_Pairs/24_Swap_Nodes_in_Pairs.md)
 - [328_Odd_Even_Linked_List](./problems/328_Odd_Even_Linked_List/328_Odd_Even_Linked_List.md)
+- [92_Reverse_Linked_List_II /*/*](./problems/92_Reverse_Linked_List_II/92_Reverse_Linked_List_II.md)
