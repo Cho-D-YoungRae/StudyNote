@@ -6,7 +6,7 @@
 - [937_Reorder_Data_in_Log_Files](./problems/937_Reorder_Data_in_Log_Files/937_Reorder_Data_in_Log_Files.md)
 - [819_Most_Common_Word](./problems/819_Most_Common_Word/819_Most_Common_Word.md)
 - [49_Group_Anagrams](./problems/49_Group_Anagrams/49_Group_Anagrams.md)
-- [5_Longest_Palindromic_Substring *](./problems/5_Longest_Palindromic_Substring/5_Longest_Palindromic_Substring.md) 
+- [5_Longest_Palindromic_Substring \*](./problems/5_Longest_Palindromic_Substring/5_Longest_Palindromic_Substring.md) 
 - [1_Two_Sum](./problems/1_Two_Sum/1_Two_Sum.md)
 - [42_Trapping_Rain_Water \*\*](./problems/42_Trapping_Rain_Water/42_Trapping_Rain_Water.md)
 - [15_3Sum](./problems/15_3Sum/15_3Sum.md)
@@ -20,3 +20,4 @@
 - [24_Swap_Nodes_in_Pairs](./problems/24_Swap_Nodes_in_Pairs/24_Swap_Nodes_in_Pairs.md)
 - [328_Odd_Even_Linked_List](./problems/328_Odd_Even_Linked_List/328_Odd_Even_Linked_List.md)
 - [92_Reverse_Linked_List_II /*/*](./problems/92_Reverse_Linked_List_II/92_Reverse_Linked_List_II.md)
+- [20_Valid_Parentheses](./problems/20_Valid_Parentheses/20_Valid_Parentheses.md)
