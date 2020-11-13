@@ -11,7 +11,7 @@ from collections import Counter
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
 
-        isRepetited = Counter()
+        isRepetited = Counter() # set 으로 하는게 더 나을 듯
         toComp = 0
         result = 0
         start = 0
@@ -39,3 +39,6 @@ class Solution:
 > Runtime: 68 ms, faster than 54.13% of Python3 online submissions for Longest Substring Without Repeating Characters.
 
 > Memory Usage: 14.2 MB, less than 100.00% of Python3 online submissions for Longest Substring Without Repeating Characters.
+
+
+###### 교재 풀이 확인

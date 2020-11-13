@@ -25,4 +25,6 @@
 - [739_Daily_Temperatures](./problems/739_Daily_Temperatures/739_Daily_Temperatures.md)
 - [23_Merge_k_Sorted_Lists \#](./problems/23_Merge_k_Sorted_Lists/23_Merge_k_Sorted_Lists.md)
 - [771_Jewels_and_Stones](./problems/771_Jewels_and_Stones/771_Jewels_and_Stones.md)
-- [3_Longest_Substring_Without_Repeating_Characters](./problems/3_Longest_Substring_Without_Repeating_Characters/3_Longest_Substring_Without_Repeating_Characters.md)
+- [3_Longest_Substring_Without_Repeating_Characters \*](./problems/3_Longest_Substring_Without_Repeating_Characters/3_Longest_Substring_Without_Repeating_Characters.md)
+- [347_Top_K_Frequent_Elements](./problems/347_Top_K_Frequent_Elements/347_Top_K_Frequent_Elements.md)
+- [200_Number_of_Islands](./problems/200_Number_of_Islands/200_Number_of_Islands.md)
