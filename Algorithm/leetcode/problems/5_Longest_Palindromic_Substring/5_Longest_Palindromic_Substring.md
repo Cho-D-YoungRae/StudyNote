@@ -1,4 +1,5 @@
-#### [42_Trapping_Rain_Water](https://leetcode.com/problems/trapping-rain-water/)
+#### [5_Longest_Palindromic_Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+> 159 pg
 
 
 ###### My Solution 1
@@ -24,8 +25,5 @@ class Solution:
 주어지는 문자열의 최대 길이가 1000이었고 완전 탐색이 가능할 정도의 숫자여서 시도해보았다. 역시 속도는 느렸다.
 
 
-###### 교재 풀이
+###### 교재 풀이 확인
 
-중앙을 중심으로 확장하는 풀이
-
-[교재코드](../../algorithm-interview-master/2-python/ch06/6-1.py)
