@@ -1,7 +1,6 @@
 #### [49_Group_Anagrams](https://leetcode.com/problems/group-anagrams/)
 
-**My Solution 1**
-python
+###### My Solution 1
 ```python
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
@@ -24,7 +23,7 @@ class Solution:
 
 > Memory Usage: 16.6 MB, less than 84.81% of Python3 online submissions for Group Anagrams.           
 
-**1번 풀이 개선**
+###### My Solution 1-1
 ```python
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:        
