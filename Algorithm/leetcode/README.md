@@ -35,3 +35,5 @@
 - [78_Subsets\*](./problems/78_Subsets/78_Subsets.md)
 - [332_Reconstruct_Itinerary\#](./problems/332_Reconstruct_Itinerary/332_Reconstruct_Itinerary.md)
 - [207_Course_Schedule\#](./problems/207_Course_Schedule/207_Course_Schedule.md)
+- [743_Network_Delay_Time\#](./problems/743_Network_Delay_Time/743_Network_Delay_Time.md)
+- [787_Cheapest_Flights_Within_K_Stops\#](./problems/787_Cheapest_Flights_Within_K_Stops/787_Cheapest_Flights_Within_K_Stops.md)
