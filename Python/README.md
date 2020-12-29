@@ -6,6 +6,7 @@
 - [최댓값과 최솟값](./etc/MinValue_MaxValue.md)
 - [zip()](./etc/zip.md)
 - [객체 복사](./etc/instance_copy.md)
+- [중첩 함수에서 클래스 변수를 사용한 이유](./etc/classvar_at_nestedfunc.md)
 
 ### modules
 - [itertools](./modules/itertools.md)

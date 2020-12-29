@@ -4,7 +4,6 @@
 
 ###### My Solution 1
 
-python
 ```python
 from typing import *
 
