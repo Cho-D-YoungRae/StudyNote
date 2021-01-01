@@ -39,3 +39,7 @@
 - [787_Cheapest_Flights_Within_K_Stops\#](./problems/787_Cheapest_Flights_Within_K_Stops/787_Cheapest_Flights_Within_K_Stops.md)
 - [104_Maximum_Depth_of_Binary_Tree](./problems/104_Maximum_Depth_of_Binary_Tree/104_Maximum_Depth_of_Binary_Tree.md)
 - [543_Diameter_of_Binary_Tree\*](./problems/543_Diameter_of_Binary_Tree/543_Diameter_of_Binary_Tree.md)
+- [687_Longest_Univalue_Path\*](./problems/687_Longest_Univalue_Path/687_Longest_Univalue_Path.md)
+- [226_Invert_Binary_Tree](./problems/226_Invert_Binary_Tree/226_Invert_Binary_Tree.md)
+- [617_Merge_Two_Binary_Trees](./problems/617_Merge_Two_Binary_Trees/617_Merge_Two_Binary_Trees.md)
+  
