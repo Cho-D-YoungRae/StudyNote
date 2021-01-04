@@ -43,3 +43,4 @@
 - [226_Invert_Binary_Tree](./problems/226_Invert_Binary_Tree/226_Invert_Binary_Tree.md)
 - [617_Merge_Two_Binary_Trees](./problems/617_Merge_Two_Binary_Trees/617_Merge_Two_Binary_Trees.md)
 - [110_Balanced_Binary_Tree](./problems/110_Balanced_Binary_Tree/110_Balanced_Binary_Tree.md)
+- [310_Minimum_Height_Trees\#](./problems/310_Minimum_Height_Trees/310_Minimum_Height_Trees.md)
