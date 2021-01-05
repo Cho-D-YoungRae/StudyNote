@@ -12,3 +12,7 @@
 ## [MySQL](./MySQL)
 
 ## [GIT](./GIT)
+
+<br>
+
+#### [블로그 업로드 해볼 것](./blog/README.md)
