@@ -45,3 +45,5 @@
 - [110_Balanced_Binary_Tree](./problems/110_Balanced_Binary_Tree/110_Balanced_Binary_Tree.md)
 - [310_Minimum_Height_Trees\#](./problems/310_Minimum_Height_Trees/310_Minimum_Height_Trees.md)
 - [108_Convert_Sorted_Array_to_Binary_Search_Tree](./problems/108_Convert_Sorted_Array_to_Binary_Search_Tree/108_Convert_Sorted_Array_to_Binary_Search_Tree.md)
+- [1038_Binary_Search_Tree_to_Greater_Sum_Tree](./problems/1038_Binary_Search_Tree_to_Greater_Sum_Tree/1038_Binary_Search_Tree_to_Greater_Sum_Tree.md)
+- [938_Range_Sum_of_BST \*](./problems/938_Range_Sum_of_BST/938_Range_Sum_of_BST.md)
