@@ -47,3 +47,6 @@
 - [108_Convert_Sorted_Array_to_Binary_Search_Tree](./problems/108_Convert_Sorted_Array_to_Binary_Search_Tree/108_Convert_Sorted_Array_to_Binary_Search_Tree.md)
 - [1038_Binary_Search_Tree_to_Greater_Sum_Tree](./problems/1038_Binary_Search_Tree_to_Greater_Sum_Tree/1038_Binary_Search_Tree_to_Greater_Sum_Tree.md)
 - [938_Range_Sum_of_BST \*](./problems/938_Range_Sum_of_BST/938_Range_Sum_of_BST.md)
+- [783_Minimum_Distance_Between_BST_Nodes](./problems/783_Minimum_Distance_Between_BST_Nodes/783_Minimum_Distance_Between_BST_Nodes.md)
+- [105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal](./problems/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.md)
+- [215_Kth_Largest_Element_in_an_Array](./problems/215_Kth_Largest_Element_in_an_Array/215_Kth_Largest_Element_in_an_Array.md)
