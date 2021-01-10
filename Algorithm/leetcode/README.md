@@ -50,3 +50,4 @@
 - [783_Minimum_Distance_Between_BST_Nodes](./problems/783_Minimum_Distance_Between_BST_Nodes/783_Minimum_Distance_Between_BST_Nodes.md)
 - [105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal](./problems/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal/105_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal.md)
 - [215_Kth_Largest_Element_in_an_Array](./problems/215_Kth_Largest_Element_in_an_Array/215_Kth_Largest_Element_in_an_Array.md)
+- [56_Merge_Intervals](./problems/56_Merge_Intervals/56_Merge_Intervals.md)
