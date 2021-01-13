@@ -1,20 +1,14 @@
-# StudyMemo
+# Algorithm
+> 문제들은 Stack 순서로
 
-<br>
+
+### [leetcode](./leetcode)
+
+### [programmers](./programmers)
+
+### [BAEKJOON](./BAEKJOON)
+
+### [이것이 코딩 테스트다](./ThisIsCodingTest)
 
 
-## [Algorithm](./Algorithm)
 
-## [Python](./Python)
-
-## [JAVA](./JAVA)
-
-## [MySQL](./MySQL)
-
-## [GIT](./GIT)
-
-## [Refactoring](./Refactoring)
-
-<br>
-
-#### [블로그 업로드 해볼 것](./blog/README.md)
