@@ -1,6 +1,6 @@
-<https://leetcode.com/problems/sliding-window-maximum/>
+# [239_Sliding_Window_Maximum](https://leetcode.com/problems/sliding-window-maximum/)
 
-# Try1 - 시간초과
+## Try1 - 시간초과
 ```python
 from typing import *
 
@@ -16,7 +16,7 @@ class Solution:
 
 해당되는 범위의 슬라이드마다 최댓값을 계산한다.
 
-# Try2 - 시간초과
+## Try2 - 시간초과
 ```python
 from typing import *
 
@@ -39,7 +39,7 @@ class Solution:
         return result
 ```
 
-# Try 3
+## Try 3
 ```python
 from typing import *
 import heapq
@@ -76,7 +76,7 @@ class Solution:
         return result
 ```
 
-# Try 4
+## Try 4
 ```python
 class Solution:
     def maxSlidingWindow(self, nums: List[int], k: int) -> List[int]:
@@ -106,7 +106,7 @@ class Solution:
 ```
 3번풀이와 유사하다. Counter를 사용하는 대신 인덱스를 이용해 슬라이드 내에 포함되는지 체크한다. 3번은 반복문이 한번 돌 때마다 heap에 push, pop하는데 이 풀이는 필요시만 한다.
 
-# 참고풀이 1 - 시간초과
+## 참고풀이 1 - 시간초과
 ```python
 import collections
 from typing import List

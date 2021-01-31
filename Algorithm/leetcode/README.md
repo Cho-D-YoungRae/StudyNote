@@ -1,7 +1,9 @@
 # leetcode
 
 ## 풀이 (explanation)
-- [239. Sliding Window Maximum](./explanation/239.%20Sliding%20Window%20Maximum.md)
+- [134_Gas_Station](./explanation/134_Gas_Station.md)
+- [406_Queue_Reconstruction_by_Height](./explanation/406_Queue_Reconstruction_by_Height.md)
+- [239_Sliding_Window_Maximum](./explanation/239_Sliding_Window_Maximum.md)
 
 ## 풀었던 문제들 (log)
 **파이썬 알고리즘 인터뷰 수록 문제**
@@ -67,4 +69,5 @@
 - [76_Minimum_Window_Substring \#](./log/76_Minimum_Window_Substring.md)
 - [424_Longest_Repeating_Character_Replacement](./log/424_Longest_Repeating_Character_Replacement.md)
 - [122_Best_Time_to_Buy_and_Sell_Stock_II](./log/122_Best_Time_to_Buy_and_Sell_Stock_II.md)
-- [406. Queue Reconstruction by Height \#](./log/406_Queue_Reconstruction_by_Height.md)
+- [406_Queue_Reconstruction_by_Height \#@](./log/406_Queue_Reconstruction_by_Height.md)
+- [134_Gas_Station \*@](./log/134_Gas_Station.md)
