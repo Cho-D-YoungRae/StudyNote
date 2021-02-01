@@ -1,6 +1,7 @@
 # [406_Queue_Reconstruction_by_Height](https://leetcode.com/problems/queue-reconstruction-by-height/)
 
 ## 참조풀이
+> `파이썬 알고리즘 인터뷰` - 593pg
 ```python
 from typing import *
 import heapq
@@ -38,7 +39,3 @@ class Solution:
 
 
 
-
-
-# 참고
-`파이썬 알고리즘 인터뷰` - 593pg

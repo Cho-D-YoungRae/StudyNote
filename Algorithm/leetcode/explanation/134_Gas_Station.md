@@ -37,6 +37,7 @@ class Solution:
 > Memory Usage: 16.2 MB, less than 5.39% of Python3 online submissions for Gas Station.
 
 ## 참고 풀이
+> `파이썬 알고리즘 인터뷰` - 599pg
 ```python
 from typing import *
 
@@ -51,7 +52,7 @@ class Solution:
         # 전체를 방문하며 성립되지 않으면 출발점을 한 칸씩 뒤로 밀어낸다.
         # 정답은 한 곳이므로 이미 지나간 앞부분 다시 확인할 필요 없음
         # 성립하는 곳 찾으면 그 곳이 정답
-        
+
         start, fuel = 0, 0
         for i in range(len(gas)):
             # 출발점이 안 되는 지점 판별
@@ -63,6 +64,3 @@ class Solution:
 
         return start
 ```
-
-# 참고
-`파이썬 알고리즘 인터뷰` - 599pg

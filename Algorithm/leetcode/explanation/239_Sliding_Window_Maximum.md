@@ -107,6 +107,7 @@ class Solution:
 3번풀이와 유사하다. Counter를 사용하는 대신 인덱스를 이용해 슬라이드 내에 포함되는지 체크한다. 3번은 반복문이 한번 돌 때마다 heap에 push, pop하는데 이 풀이는 필요시만 한다.
 
 ## 참고풀이 1 - 시간초과
+> `파이썬 알고리즘 인터뷰` - 571pg
 ```python
 import collections
 from typing import List
@@ -139,5 +140,3 @@ class Solution:
 교재에 있던 풀이 인데 입력 예시가 추가되었는지 이제 시간초과가 뜬다.
 Try2 와 풀이가 유사
 
-# 참고
-`파이썬 알고리즘 인터뷰` - 571pg
