@@ -1,6 +1,7 @@
 # leetcode
 
 ## 풀이 (explanation)
+- - [241_Different_Ways_to_Add_Parentheses](./explanation/241_Different_Ways_to_Add_Parentheses.md)
 - [134_Gas_Station](./explanation/134_Gas_Station.md)
 - [406_Queue_Reconstruction_by_Height](./explanation/406_Queue_Reconstruction_by_Height.md)
 - [239_Sliding_Window_Maximum](./explanation/239_Sliding_Window_Maximum.md)
@@ -72,3 +73,4 @@
 - [406_Queue_Reconstruction_by_Height \#@](./log/406_Queue_Reconstruction_by_Height.md)
 - [134_Gas_Station \*@](./log/134_Gas_Station.md)
 - [455_Assign_Cookies](./log/455_Assign_Cookies.md)
+- [241_Different_Ways_to_Add_Parentheses \#](./log/241_Different_Ways_to_Add_Parentheses.md)
