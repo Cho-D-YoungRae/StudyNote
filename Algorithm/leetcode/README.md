@@ -1,7 +1,7 @@
 # leetcode
 
 ## 풀이 (explanation)
-- - [241_Different_Ways_to_Add_Parentheses](./explanation/241_Different_Ways_to_Add_Parentheses.md)
+- - [241_Different_Ways_to_Add_Parentheses - 해야됨](./explanation/241_Different_Ways_to_Add_Parentheses.md)
 - [134_Gas_Station](./explanation/134_Gas_Station.md)
 - [406_Queue_Reconstruction_by_Height](./explanation/406_Queue_Reconstruction_by_Height.md)
 - [239_Sliding_Window_Maximum](./explanation/239_Sliding_Window_Maximum.md)
