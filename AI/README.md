@@ -1,6 +1,5 @@
 # Machine Learning
 ## preprocessing
-- [OneHotEncoding(원핫인코딩)]
 - [LabelEncoder VS OrdinalEncoder](preprocessing/LabelEncoder%20VS%20OrdinalEncoder.ipynb)
 - [과대적합 VS 과소적합](preprocessing/과대적합%20VS%20과소적합.md)
 - [데이터 구조 훑어보기](preprocessing/데이터%20구조%20훑어보기.md)
